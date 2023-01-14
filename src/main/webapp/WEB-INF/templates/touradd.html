@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Tour</title>
+  <link rel="stylesheet" type="text/css" media="all"
+        href="../../css/style.css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<section id="travelagency">
+  <div class="container">
+    <div th:insert="fragments/header :: header"></div>
+    <div class="addeditentity">
+      <p>Add new tour:</p>
+      <form th:action="@{/TourAddServlet}" method="post">
+        <label for="tourDeparture">Departure city:</label><br>
+        <input type="text" id="tourDeparture" name="tourDeparture"/><br>
+        <label for="tourArrival">Arrival city:</label><br>
+        <input type="text" id="tourArrival" name="tourArrival"/><br>
+        <label for="tourTransport">Transport:</label><br>
+        <input type="text" id="tourTransport" name="tourTransport"/><br>
+        <input type="submit" value="Add"/>
+      </form>
+    </div>
+    <div th:insert="fragments/footer :: footer"></div>
+  </div>
+</section></body>
+</html>

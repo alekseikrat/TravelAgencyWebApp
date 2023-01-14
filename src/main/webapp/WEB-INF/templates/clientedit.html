@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Client</title>
+  <link rel="stylesheet" type="text/css" media="all"
+        href="../../css/style.css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<section id="travelagency">
+  <div class="container">
+    <div th:insert="fragments/header :: header"></div>
+    <div class="addeditentity">
+      <form th:action="@{/ClientsServlet}" method="post">
+        <input type="hidden" name="action"
+               value="clientEdit"/>
+        <label for="clientId">Client Id:</label><br>
+        <input type="text" id=clientId name="clientId"
+               th:value="${client.id}" readonly/><br>
+        <label for="clientSurname">Client surname:</label><br>
+        <input type="text" id=clientSurname name="clientSurname"
+               th:value="${client.surname}"/><br>
+        <label for="clientName">Client name:</label><br>
+        <input type="text" id=clientName name="clientName"
+               th:value="${client.name}"/><br>
+        <label for="clientAge">Client age:</label><br>
+        <input type="number" id=clientAge name="clientAge"
+               th:value="${client.age}"/><br>
+        <input type="submit" value="Edit"/>
+      </form>
+    </div>
+    <div th:insert="fragments/footer :: footer"></div>
+  </div>
+</section>
+</body>
+</html>

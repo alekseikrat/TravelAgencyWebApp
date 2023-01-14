@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Tours</title>
+  <link rel="stylesheet" type="text/css" media="all"
+        href="../../css/style.css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<section id="travelagency">
+  <div class="container">
+    <div th:insert="fragments/header :: header"></div>
+    <div class="tables">
+      <table border="1">
+        <caption>Tours:</caption>
+        <tr>
+          <th>Tour id</th>
+          <th>Departure city</th>
+          <th>Arrival city</th>
+          <th>Transport</th>
+          <th>Edit tour</th>
+          <th>Remove tour</th>
+        </tr>
+        <tr th:each="tour : ${tours}">
+          <td th:utext="${tour.id}">tourId</td>
+          <td th:utext="${tour.departure}">tourDeparture</td>
+          <td th:utext="${tour.arrival}">tourArrival</td>
+          <td th:utext="${tour.transport}">tourTransport</td>
+          <td>
+            <form th:action="@{/TourEditServlet}" method="post">
+              <input type="hidden" name="action"
+                     value="tourEdit"/>
+              <input type="hidden" name="tourId"
+                     th:value="${tour.id}"/>
+              <input type="submit" value="Edit"/>
+            </form>
+          </td>
+          <td>
+            <form th:action="@{/ToursServlet}" method="post">
+              <input type="hidden" name="action"
+                     value="tourRemove"/>
+              <input type="hidden" name="tourId"
+                     th:value="${tour.id}"/>
+              <input type="submit" value="Remove"/>
+            </form>
+          </td>
+        </tr>
+      </table>
+      <p><a href="touradd.html" th:href="@{/TourAddServlet}">Add tour</a></p>
+      <div th:insert="fragments/footer :: footer"></div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

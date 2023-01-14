@@ -1,0 +1,68 @@
+#travelagency {
+  font-family: 'Roboto', sans-serif;
+  color: #0b1e60;	
+}
+
+#travelagency h1 {
+  margin: 0;
+}
+
+header {
+  display: flex;	
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2rem;
+  background-image: url('../images/buses-background.jpg');
+  height: 100px;
+  background-size: cover;
+}
+
+header.login {
+  justify-content: flex-start;
+}
+
+.loginmessage {
+  color: red;
+}
+
+header ul {
+  display: flex;
+  list-style-type: none;
+}  
+
+header ul li {
+  margin-right: 1rem;
+  font-weight: 700;
+}
+
+header form {
+  display: flex;
+}
+
+.content {
+  display: flex;
+  margin-top: 5px;
+}
+
+.loginform {
+  margin: auto;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+}
+
+.tables {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.tables .selectemployees, .selectclients {
+  margin-top: 20px;
+}
+
+table caption {
+  font-weight: bold;
+}

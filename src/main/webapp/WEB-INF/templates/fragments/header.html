@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Header</title>
+  <link rel="stylesheet" type="text/css" media="all"
+        href="../../css/style.css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<header th:fragment="header">
+  <img src="../../images/bus-logo.png" th:src="@{/images/bus-logo.png}"
+       alt="logo" width="100" height="100">
+  <h1>Travel Agency</h1>
+  <ul>
+    <li><a href="home.html" th:href="@{HomeServlet}">Home</a></li>
+    <li><a href="tours.html" th:href="@{ToursServlet}">Tours</a></li>
+    <li><a href="employees.html" th:href="@{EmployeesServlet}">Employees</a></li>
+    <li><a href="clients.html" th:href="@{ClientsServlet}">Clients</a></li>
+  </ul>
+  <form class="header-form"
+        role="form" action="LoginServlet" method="post">
+    <input type="hidden" name="action"
+           id="action" value="logout"/>
+    <button type="submit">Logout</button>
+  </form>
+</header>
+</body>
+</html>

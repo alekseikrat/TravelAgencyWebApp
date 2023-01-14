@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Tours</title>
+  <link rel="stylesheet" type="text/css" media="all"
+        href="../../css/style.css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<section id="travelagency">
+  <div class="container">
+    <div th:insert="fragments/header :: header"></div>
+    <div class="tables">
+      <div class="tourinfo">
+        <table border="1">
+          <caption>Tour info:</caption>
+          <tr>
+            <th>№</th>
+            <th>Departure city</th>
+            <th>Arrival city</th>
+            <th>Transport</th>
+          </tr>
+          <tr>
+            <td th:utext="${tour.Id}">tourId</td>
+            <td th:utext="${tour.departure}">tourDeparture</td>
+            <td th:utext="${tour.arrival}">tourArrival</td>
+            <td th:utext="${tour.transport}">tourTransport</td>
+          </tr>
+        </table>
+      </div>
+      <div class="selectclients">
+        <table border="1">
+          <caption>Tour clients:</caption>
+          <tr>
+            <th>№</th>
+            <th>Tour clients</th>
+            <th>Add client</th>
+            <th>Remove client</th>
+          </tr>
+          <tr>
+            <td th:utext="${tour.Id}">tourId</td>
+            <td>
+              <th:block th:each="client : ${tourClients}"
+                        th:text="${client}"></th:block>
+            </td>
+            <td>
+              <form th:action="@{/TourAssignmentServlet}"
+                    method="post">
+                <select name="selectedClient">
+                  <option value="0">Select client</option>
+                  <option th:each="client : ${otherClients}"
+                          th:value="${client.id}"
+                          th:text="${client}"></option>
+                </select>
+                <input type="hidden" name="action"
+                       value="clientAssign"/>
+                <input type="hidden" name="tourId"
+                       th:value="${tour.id}"/>
+                <input type="submit" value="Assign"/>
+              </form>
+            </td>
+            <td>
+              <form th:action="@{/TourAssignmentServlet}"
+                    method="post">
+                <select name="selectedClient">
+                  <option value="0">Select client</option>
+                  <option th:each="client : ${tourClients}"
+                          th:value="${client.id}"
+                          th:text="${client}"></option>
+                </select>
+                <input type="hidden" name="action"
+                       value="clientRemove"/>
+                <input type="hidden" name="tourId"
+                       th:value="${tour.id}"/>
+                <input type="submit" value="Remove"/>
+              </form>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div th:insert="fragments/footer :: footer"></div>
+  </div>
+</section>
+</body>
+</html>

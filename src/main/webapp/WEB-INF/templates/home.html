@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Home</title>
+  <link rel="stylesheet" type="text/css" media="all"
+        href="../../css/style.css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<section id="travelagency">
+  <div class="container">
+    <div th:insert="fragments/header :: header"></div>
+    <h2 th:text="${message}"></h2>
+    <div class="tables">
+      <table border="1">
+        <caption>Tours Assignments:</caption>
+        <tr>
+          <th>Departure city</th>
+          <th>Arrival city</th>
+          <th>Transport</th>
+          <th>Clients</th>
+          <th>Edit tour</th>
+        </tr>
+        <tr th:each="tourAssignment : ${tourAssignments}">
+          <td th:utext="${tourAssignment.tourDeparture}">tourDeparture</td>
+          <td th:utext="${tourAssignment.tourArrival}">tourArrival</td>
+          <td th:utext="${tourAssignment.tourTransport}">tourTransport</td>
+          <td th:utext="${tourAssignment.clientsInfo}">clientsInfo</td>
+          <td>
+            <form th:action="@{/TourAssignmentServlet}"
+                  method="post">
+              <input type="hidden" name="action"
+                     value="tourSelect"/>
+              <input type="hidden" name="tourId"
+                     id="tourId"
+                     th:value="${tourAssignment.tourId}"/>
+              <button type="submit"
+                      value="Assignments">Assignments</button>
+            </form>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div th:insert="fragments/footer :: footer"></div>
+  </div>
+</section>
+</body>
+</html>

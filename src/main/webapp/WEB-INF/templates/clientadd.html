@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Client</title>
+  <link rel="stylesheet" type="text/css" media="all"
+        href="../../css/style.css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<section id="travelagency">
+  <div class="container">
+    <div th:insert="fragments/header :: header"></div>
+    <div class="addeditentity">
+      <p>Add new client:</p>
+      <form th:action="@{/ClientAddServlet}" method="post">
+        <label for="clientSurname">Client surname:</label><br>
+        <input type="text" id="clientSurname" name="clientSurname"/><br>
+        <label for="clientName">Client name:</label><br>
+        <input type="text" id="clientName" name="clientName"/><br>
+        <label for="clientAge">Client age:</label><br>
+        <input type="number" id="clientAge" name="clientAge"/><br>
+        <input type="submit" value="Add"/>
+      </form>
+    </div>
+    <div th:insert="fragments/footer :: footer"></div>
+  </div>
+</section></body>
+</html>

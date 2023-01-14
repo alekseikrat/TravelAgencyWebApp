@@ -1,0 +1,39 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+    <persistence-unit name="travelagencyPU"
+                      transaction-type="RESOURCE_LOCAL">
+        <description>
+            Persistence unit for the TravelAgency Web Application
+        </description>
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>ua.edu.znu.travelagencyweb.model.Tour</class>
+        <class>ua.edu.znu.travelagencyweb.model.Client</class>
+        <class>ua.edu.znu.travelagencyweb.model.Employee</class>
+        <class>ua.edu.znu.travelagencyweb.model.User</class>
+        <properties>
+            <property name="javax.persistence.jdbc.driver"
+                      value="com.mysql.cj.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost:3306/travelagency?serverTimezone=UTC"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="0Rjhjkm."/>
+            <property name="hibernate.dialect"
+                      value="org.hibernate.dialect.MySQL8Dialect"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+            <!-- Commented after schema generation
+            <property name="javax.persistence.schema-generation.database.action"
+            value="update"/>
+            <property name="javax.persistence.schema-generation.scripts.action"
+            value="update"/>
+            <property name="javax.persistence.schema-generation.scripts.create-target"
+            value="c:/Users/Admin/IdeaProjects/TravelAgencyWebApp/src/main/resources/META-INF/sampleCreate.ddl"/>
+            <property name="javax.persistence.schema-generation.scripts.drop-target"
+            value="c:/Users/Admin/IdeaProjects/TravelAgencyWebApp/src/main/resources/META-INF/sampleDrop.ddl"/> -->
+        </properties>
+    </persistence-unit>
+</persistence>

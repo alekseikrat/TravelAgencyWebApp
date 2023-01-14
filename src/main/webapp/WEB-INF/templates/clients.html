@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Clients</title>
+  <link rel="stylesheet" type="text/css" media="all"
+        href="../../css/style.css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<section id="travelagency">
+  <div class="container">
+    <div th:insert="fragments/header :: header"></div>
+    <div class="tables">
+      <table border="1">
+        <caption>Clients:</caption>
+        <tr>
+          <th>Client id</th>
+          <th>Client surname</th>
+          <th>Client name</th>
+          <th>Client age</th>
+          <th>Edit client</th>
+          <th>Remove client</th>
+        </tr>
+        <tr th:each="client : ${clients}">
+          <td th:utext="${client.id}">clientId</td>
+          <td th:utext="${client.surname}">clientSurname</td>
+          <td th:utext="${client.name}">clientName</td>
+          <td th:utext="${client.age}">clientAge</td>
+          <td>
+            <form th:action="@{/ClientEditServlet}" method="post">
+              <input type="hidden" name="action"
+                     value="clientEdit"/>
+              <input type="hidden" name="clientId"
+                     th:value="${client.id}"/>
+              <input type="submit" value="Edit"/>
+            </form>
+          </td>
+          <td>
+            <form th:action="@{/ClientsServlet}" method="post">
+              <input type="hidden" name="action"
+                     value="clientRemove"/>
+              <input type="hidden" name="clientId"
+                     th:value="${client.id}"/>
+              <input type="submit" value="Remove"/>
+            </form>
+          </td>
+        </tr>
+      </table>
+      <p><a href="clientadd.html" th:href="@{/ClientAddServlet}">Add client</a></p>
+      <div th:insert="fragments/footer :: footer"></div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Employees</title>
+  <link rel="stylesheet" type="text/css" media="all"
+        href="../../css/style.css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<section id="travelagency">
+  <div class="container">
+    <div th:insert="fragments/header :: header"></div>
+    <div class="tables">
+      <table border="1">
+        <caption>Employees:</caption>
+        <tr>
+          <th>Employee id</th>
+          <th>Employee surname</th>
+          <th>Employee name</th>
+          <th>Employee age</th>
+          <th>Assignments</th>
+          <th>Edit employee</th>
+          <th>Remove employee</th>
+        </tr>
+        <tr th:each="employee : ${employees}">
+          <td th:utext="${employee.id}">employeeId</td>
+          <td th:utext="${employee.surname}">employeeSurname</td>
+          <td th:utext="${employee.name}">employeeName</td>
+          <td th:utext="${employee.age}">employeeAge</td>
+          <td>
+            <form th:action="@{/EmployeeAssignmentServlet}"
+                  method="post">
+              <input type="hidden" name="action"
+                     value="employeeSelect"/>
+              <input type="hidden" name="employeeId"
+                     id="employeeId"
+                     th:value="${employee.id}"/>
+              <button type="submit"
+                      value="Assignment">Assignment</button>
+            </form>
+          </td>
+          <td>
+            <form th:action="@{/EmployeeEditServlet}" method="post">
+              <input type="hidden" name="action"
+                     value="employeeEdit"/>
+              <input type="hidden" name="employeeId"
+                     th:value="${employee.id}"/>
+              <input type="submit" value="Edit"/>
+            </form>
+          </td>
+          <td>
+            <form th:action="@{/EmployeesServlet}" method="post">
+              <input type="hidden" name="action"
+                     value="employeeRemove"/>
+              <input type="hidden" name="employeeId"
+                     th:value="${employee.id}"/>
+              <input type="submit" value="Remove"/>
+            </form>
+          </td>
+        </tr>
+      </table>
+      <p><a href="employeeadd.html" th:href="@{/EmployeeAddServlet}">Add employee</a></p>
+      <div th:insert="fragments/footer :: footer"></div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

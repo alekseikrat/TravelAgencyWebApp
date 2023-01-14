@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Employee</title>
+  <link rel="stylesheet" type="text/css" media="all"
+        href="../../css/style.css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<section id="travelagency">
+  <div class="container">
+    <div th:insert="fragments/header :: header"></div>
+    <div class="addeditentity">
+      <p>Add new employee:</p>
+      <form th:action="@{/EmployeeAddServlet}" method="post">
+        <label for="employeeSurname">Employee surname:</label><br>
+        <input type="text" id="employeeSurname" name="employeeSurname"/><br>
+        <label for="employeeName">Employee name:</label><br>
+        <input type="text" id="employeeName" name="employeeName"/><br>
+        <label for="employeeAge">Employee age:</label><br>
+        <input type="number" id="employeeAge" name="employeeAge"/><br>
+        <input type="submit" value="Add"/>
+      </form>
+    </div>
+    <div th:insert="fragments/footer :: footer"></div>
+  </div>
+</section></body>
+</html>
